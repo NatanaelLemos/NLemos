@@ -1,5 +1,4 @@
-﻿using System;
-using MongoDB.Bson.Serialization;
+﻿using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using NLemos.Domain.Entities;
 
@@ -18,6 +17,8 @@ namespace NLemos.Infrastructure.Data
             settings.SslSettings = new SslSettings { EnabledSslProtocols = System.Security.Authentication.SslProtocols.Tls12 };
             var mongoClient = new MongoClient(settings);
             _database = mongoClient.GetDatabase(url.DatabaseName);
+
+            SeedCreator();
         }
 
         private void MapModels()
@@ -32,11 +33,31 @@ namespace NLemos.Infrastructure.Data
                 cm.AutoMap();
                 cm.SetIgnoreExtraElements(true);
             });
+            BsonClassMap.RegisterClassMap<Domain.Entities.Creator>(cm =>
+            {
+                cm.AutoMap();
+                cm.SetIgnoreExtraElements(true);
+            });
+        }
+
+        private void SeedCreator()
+        {
+            if (Creators.Find(Builders<Creator>.Filter.Empty).Any()) return;
+
+            Creators.InsertOne(new Creator
+            {
+                Image = "launcher-icon-2x.png",
+                JobTitle = "Creator of the blog",
+                Name = "Creator",
+                Summary = "This is the person who created this blog"
+            });
         }
 
         private IMongoCollection<T> GetCollection<T>(string collectionName) => _database.GetCollection<T>(collectionName);
 
         public IMongoCollection<Post> Posts => GetCollection<Post>("posts");
         public IMongoCollection<Domain.Entities.Tag> Tags => GetCollection<Domain.Entities.Tag>("tags");
+
+        public IMongoCollection<Creator> Creators => GetCollection<Creator>("creators");
     }
 }

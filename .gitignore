@@ -345,3 +345,4 @@ typings/
 # dotenv environment variables file
 .env
 
+appsettings.Development.json
