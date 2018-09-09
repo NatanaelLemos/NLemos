@@ -2,9 +2,9 @@
 
 namespace NLemos.Infrastructure.Data
 {
-    public class PostRepositoryCache : DataCache<Post>
+    public class CreatorCache : DataCache<Creator>
     {
-        public PostRepositoryCache() : base(24)
+        public CreatorCache() : base(168)
         {
 
         }

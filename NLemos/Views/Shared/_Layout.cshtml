@@ -59,7 +59,7 @@
                 @RenderBody()
             </section>
             <div class="col-md-3">
-                @(await Html.PartialAsync("_Sidebar"))
+                @(await Component.InvokeAsync("Sidebar"))
             </div>
         </div>
     </main>

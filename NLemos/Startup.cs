@@ -28,8 +28,13 @@ namespace NLemos
 
             services
                 .AddScoped<IPostRepository, PostRepositoryProxy>()
-                .AddSingleton<PostRepositoryCache>()
+                .AddScoped<ICreatorRepository, CreatorRepositoryProxy>();
+            services
                 .AddScoped<IPostService, PostService>()
+                .AddScoped<ICreatorService, CreatorService>();
+            services
+                .AddSingleton<PostRepositoryCache>()
+                .AddSingleton<CreatorCache>()
                 .AddSingleton<BlogContext>(opt => new BlogContext(connectionString));
 
 

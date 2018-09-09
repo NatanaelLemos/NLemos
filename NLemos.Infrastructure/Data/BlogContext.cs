@@ -44,13 +44,7 @@ namespace NLemos.Infrastructure.Data
         {
             if (Creators.Find(Builders<Creator>.Filter.Empty).Any()) return;
 
-            Creators.InsertOne(new Creator
-            {
-                Image = "launcher-icon-2x.png",
-                JobTitle = "Creator of the blog",
-                Name = "Creator",
-                Summary = "This is the person who created this blog"
-            });
+            Creators.InsertOne(new Creator());
         }
 
         private IMongoCollection<T> GetCollection<T>(string collectionName) => _database.GetCollection<T>(collectionName);

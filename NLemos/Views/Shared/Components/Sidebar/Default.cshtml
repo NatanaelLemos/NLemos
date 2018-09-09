@@ -1,0 +1,91 @@
+﻿@model Creator
+
+<div class="sidebar" itemscope itemtype="//schema.org/Person" itemprop="Person">
+    <div class="row">
+        <div class="col-md-offset-4 col-md-4 col-sm-offset-5 col-sm-2 col-xs-offset-5 col-xs-3">
+            <img class="img-circle img-responsive img-avatar" itemprop="image" src="@Model.Image" title="Foto de @Model.Name" alt="Foto de @Model.Name" />
+        </div>
+    </div>
+
+    <h4 itemprop="name">@Model.Name</h4>
+    <h5 itemprop="jobTitle">@Model.JobTitle</h5>
+
+    <div class="small" itemprop="disambiguatingDescription">
+        <p>
+            @Html.Raw(Model.Summary.Replace("\n", "<br /><br />"))
+        </p>
+    </div>
+
+    <hr />
+
+    <ul class="list-inline text-center">
+        @foreach (var item in Model.Social)
+        {
+            <li>
+                @switch (item.Type)
+                {
+                    case SocialType.Facebook:
+                        <a href="@item.Url" target="_blank" rel="noopener" title="Facebook de @Model.Name">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                        break;
+                    case SocialType.GitHub:
+                        <a href="@item.Url" target="_blank" rel="noopener" title="Github de @Model.Name">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                        break;
+                    case SocialType.LinkedIn:
+                        <a href="@item.Url" target="_blank" rel="noopener" title="LinkedIn de @Model.Name" itemprop="url">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                        break;
+                    case SocialType.Instagram:
+                        <a href="@item.Url" target="_blank" rel="noopener" title="Instagram de @Model.Name" itemprop="url">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                        break;
+                    default:
+                        <a href="@item.Url" title="Email de @Model.Name" itemprop="email">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa glyphicon-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                        break;
+                }
+            </li>
+        }
+    </ul>
+
+    <hr />
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8 col-sm-offset-3 col-sm-6 col-xs-offset-2 col-xs-8">
+            <img class="img-responsive" src="//res.cloudinary.com/dtdb0xrxd/image/upload/v1494106706/MS_Cert_Professional_logo_Blk_rgb_k3bh77.png" title="Microsoft Certified Professional" alt="Microsoft Certified Professional" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8 col-sm-offset-3 col-sm-6 col-xs-offset-2 col-xs-8">
+            <img class="img-responsive" src="//res.cloudinary.com/dtdb0xrxd/image/upload/v1494106706/MCSD_WebApp_Blk_dsqcyz.png" title="Microsoft Certified Solutions Developer" alt="Microsoft Certified Solutions Developer" />
+        </div>
+    </div>
+
+    <hr />
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8 col-sm-offset-3 col-sm-6 col-xs-offset-2 col-xs-8">
+            <h4>Powered by</h4>
+            <img class="img-responsive" src="//res.cloudinary.com/dtdb0xrxd/image/upload/v1494106706/microsoft_azure_aeysok.png" title="Powered by Microsoft Azure" alt="Powered by Microsoft Azure" />
+        </div>
+    </div>
+</div>
