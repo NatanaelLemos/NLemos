@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br" prefix="og:http://ogp.me/ns#">
+<partial name="_Head" />
+
+@{
+    var backgroundImage = ViewBag.BackgroundImage ?? "//res.cloudinary.com/dtdb0xrxd/image/upload/v1494106707/pexels-photo-234394_g69cfa.jpg";
+    var description = @ViewBag.HeadDescription ?? "Natanael Lemos's blog";
+}
+
+<body>
+    <meta itemprop="creator" content="Natanael Lemos">
+    <meta itemprop="name" content="NLemos">
+    <meta itemprop="description" content="@(description)">
+    <meta itemprop="image" content="//res.cloudinary.com/dtdb0xrxd/image/upload/v1494107056/avatar_cnlbgy.jpg">
+
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="@(Url.Action("Page", "Post"))">NLemos</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="@(Url.Action("Page", "Post"))">Home</a>
+                    </li>
+                    <li>
+                        <a href="@(Url.Action("About", "Home"))">Portfólio</a>
+                    </li>
+                    <li>
+                        <a href="@(Url.Action("CV", "Me"))">Curriculum Vitae</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="intro-header" style="background-image: url('@(backgroundImage)');">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="site-heading">
+                        <h1>@ViewBag.Title</h1>
+                        <span class="subheading">@ViewBag.Summary</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container-fluid">
+        <div class="row">
+            <div class="col-lg-1 hidden-md hidden-sm hidden-xs"></div>
+            <section class="col-lg-8 col-md-9" itemscope itemtype="http://schema.org/Blog">
+                @RenderBody()
+            </section>
+            <div class="col-md-3">
+                @(await Html.PartialAsync("_Sidebar"))
+            </div>
+        </div>
+    </main>
+
+    <hr>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <p class="copyright text-muted">
+                        Copyright &copy; @(DateTime.Now.ToString("yyyy")) - Natanael Tavares Lemos
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <partial name="_Imports" />
+    @RenderSection("scripts", required: false)
+</body>
+</html>

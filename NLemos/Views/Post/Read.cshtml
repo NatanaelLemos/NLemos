@@ -1,0 +1,36 @@
+﻿@model Post
+
+<article itemid="@ViewBag.Url" itemprop="blogPosts" itemscope itemtype="http://schema.org/BlogPosting">
+    <meta property="og:title" content="@ViewBag.Title" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:url" content="@ViewBag.Url" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@ViewBag.Url" />
+    <meta name="twitter:title" content="@ViewBag.Title" />
+    <meta name="twitter:description" content="ViewBag.Summary" />
+
+    <h1 class="hide" itemprop="headline">@ViewBag.Title</h1>
+
+    @Html.Raw(Model.FullPost)
+
+    <time datetime="@(Model.PostDate.ToString("yyyy-MM-dd"))" class="hide" itemprop="datePublished">Postado em @Model.PostDate.ToString("dd/MM/yyyy")</time>
+    <time datetime="@(Model.PostDate.ToString("yyyy-MM-dd"))" class="hide" itemprop="dateModified">Modificado em @Model.PostDate.ToString("dd/MM/yyyy")</time>
+    <p itemprop="publisher" class="hide">Natanael Lemos</p>
+    <p itemprop="author" class="hide">Natanael Lemos</p>
+</article>
+
+@section scripts{
+    <div class="modal fade" id="imgExpansibleModal" tabindex="-1" role="dialog" aria-labelledby="imgExpansibleModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body img-expansible-modal">
+                </div>
+            </div>
+        </div>
+    </div>
+}

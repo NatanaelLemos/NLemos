@@ -1,0 +1,16 @@
+﻿@using System.Collections.Generic
+@model IEnumerable<Post>
+
+@Html.Partial("_Page", Model)
+
+<ul class="pager">
+    @if (ViewBag.PageNumber > 0)
+    {
+        <li class="previous">
+            <a href="@(Url.Action("Page", "Post", new {@number = (int)ViewBag.PageNumber - 1}))">&larr; Posts mais novos</a>
+        </li>
+    }
+    <li class="next">
+        <a href="@(Url.Action("Page", "Post", new {@number = (int)ViewBag.PageNumber + 1}))">Posts mais antigos &rarr;</a>
+    </li>
+</ul>

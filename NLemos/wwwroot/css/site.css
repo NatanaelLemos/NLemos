@@ -1,0 +1,152 @@
+﻿.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.navbar-default {
+    background-color: rgba(50, 50, 50, .3) !important;
+}
+
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+p {
+    margin: 19px 0;
+}
+
+.small p {
+    font-size: 0.8em;
+    margin: 15px 1px;
+}
+
+.cv-ul {
+    list-style-type: none;
+}
+
+    .cv-ul li {
+        margin-bottom: 40px;
+    }
+
+        .cv-ul li p {
+            margin-left: 12px;
+        }
+
+.copyright.text-muted {
+    color: #000;
+}
+
+.sidebar img {
+    width: 100%;
+    margin: auto;
+    max-width: 290px;
+    height: auto;
+}
+
+.sidebar .img-avatar {
+    max-width: 150px;
+}
+
+.search input {
+    max-width: 100%;
+}
+
+.search span {
+    padding: 0;
+}
+
+.search button {
+    height: 25px;
+    padding: 0 20px;
+    border: 0;
+    background-color: transparent;
+}
+
+.img-expansible {
+    cursor: pointer;
+}
+
+.hide {
+    display: none;
+    visibility: none;
+    font-size: 0;
+    height: 0;
+    width: 0;
+}
+
+.full-width {
+    width: 100%;
+    max-width: 100%;
+}
+
+.btn-sm {
+    padding: 5px 12px !important;
+}
+
+.tag-btn {
+    position: relative;
+    height: 24px;
+    width: 150px;
+}
+
+    .tag-btn div {
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        font-size: 6pt;
+        width: 126px;
+        overflow: hidden;
+        line-height: 16pt;
+    }
+
+    .tag-btn button {
+        display: inline-block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        padding: 0;
+        width: 20px;
+        text-align: center;
+    }
+
+@media screen and (max-width: 767px) {
+    .carousel-caption {
+        display: none;
+    }
+
+    .navbar-default {
+        background-color: rgba(50, 50, 50, .9) !important;
+    }
+
+        .navbar-default .navbar-brand,
+        .navbar-custom .navbar-header .navbar-toggle,
+        .navbar-default .navbar-nav > li > a {
+            color: #f5f5f5;
+        }
+
+            .navbar-default .navbar-brand:hover,
+            .navbar-custom .navbar-header .navbar-toggle:hover,
+            .navbar-default .navbar-nav > li > a:hover {
+                color: #ccc;
+            }
+
+            .navbar-default .navbar-brand:hover,
+            .navbar-custom .navbar-header .navbar-toggle:hover,
+            .navbar-default .navbar-nav > li > a:hover {
+                background-color: transparent;
+            }
+}

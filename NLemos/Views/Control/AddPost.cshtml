@@ -1,0 +1,41 @@
+﻿@model Post
+@{
+    ViewData["Title"] = "AddPost";
+    ViewBag.Title = "Create a new post";
+}
+
+<form asp-controller="Control" asp-action="AddPost" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label for="Title">Title</label>
+        <input asp-for="Title" type="text" class="form-control full-width" />
+    </div>
+
+    <div class="form-group">
+        <label for="Summary">Summary</label>
+        <textarea asp-for="Summary" class="form-control full-width" rows="5"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="FullPost">Full post</label>
+        <textarea asp-for="FullPost" class="form-control full-width" rows="15"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="Tags">Tags</label>
+        <div>
+            <input type="text" id="tagName" class="form-control" style="display: inline-block" />
+            <button type="button" class="btn btn-default btn-sm" id="btnAddTag">+</button>
+        </div>
+        <div id="tags">
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@section scripts {
+    <partial name="_ValidationScripts" />
+    <script type="text/javascript" src="~/js/control.js"></script>
+}

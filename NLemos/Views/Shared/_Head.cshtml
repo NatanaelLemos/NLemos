@@ -1,0 +1,29 @@
+﻿@{
+    var description = @ViewBag.HeadDescription ?? "Natanael Lemos's blog";
+    var keywords = @ViewBag.HeadKeywords ?? "C#, Asp.Net, MVC, desenvolvimento, blog, programação, design patterns";
+}
+<head>
+    <meta charset="utf-8" lang="pt-br" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="application-name" content="NLemos" />
+    <meta name="msapplication-tooltip" content="NLemos" />
+    <meta name="background-color" content="#000000" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="@(description)" />
+    <meta name="keywords" content="@(keywords)" />
+    <meta name="robots" content="index, follow" />
+    <meta name="Googlebot" content="index, follow, all" />
+    <meta name="author" content="Natanael Lemos" />
+    <link rel="author" href="https://plus.google.com/+NatanaelLemosDev" />
+    <link rel="me" href="https://plus.google.com/+NatanaelLemosDev" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <title>@ViewBag.Title</title>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/touch-icon-iphone.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png">
+</head>

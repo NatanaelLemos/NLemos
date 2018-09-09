@@ -1,0 +1,27 @@
+<!-- http://www.sitemaps.org/pt_BR/protocol.html -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>http://nlemos.azurewebsites.net/</loc>
+<changefreq>daily</changefreq>
+<priority>1</priority>
+<lastmod>2018-09-09</lastmod>
+</url>
+<url>
+<loc>http://nlemos.azurewebsites.net/Page/</loc>
+<changefreq>daily</changefreq>
+<priority>1</priority>
+<lastmod>2018-09-09</lastmod>
+</url>
+<url>
+<loc>http://nlemos.azurewebsites.net/Read/</loc>
+<changefreq>daily</changefreq>
+<priority>1</priority>
+<lastmod>2018-09-09</lastmod>
+</url>
+<url>
+<loc>http://nlemos.azurewebsites.net/Me/</loc>
+<changefreq>monthly</changefreq>
+<priority>1</priority>
+<lastmod>2018-09-09</lastmod>
+</url>
+</urlset>
