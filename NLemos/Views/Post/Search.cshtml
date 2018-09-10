@@ -1,7 +1,4 @@
-﻿
-@{
-    ViewData["Title"] = "Search";
-}
+﻿@using System.Collections.Generic
+@model IEnumerable<Post>
 
-<h2>Search</h2>
-
+@Html.Partial("_Page", Model)

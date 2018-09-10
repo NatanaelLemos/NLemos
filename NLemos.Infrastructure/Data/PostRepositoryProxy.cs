@@ -44,6 +44,11 @@ namespace NLemos.Infrastructure.Data
             return _instance.SkipTake(skip, take);
         }
 
+        public Task<List<Post>> Search(string text)
+        {
+            return _instance.Search(text);
+        }
+
         public void Dispose()
         {
             _instance.Dispose();

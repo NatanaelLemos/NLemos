@@ -7,6 +7,6 @@ namespace NLemos.Domain.Services
 {
     public interface ISearchService : IDisposable
     {
-        Task<IEnumerable<Post>> Search(string args);
+        Task<List<Post>> Search(string args);
     }
 }

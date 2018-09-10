@@ -31,6 +31,7 @@ namespace NLemos
                 .AddScoped<ICreatorRepository, CreatorRepositoryProxy>();
             services
                 .AddScoped<IPostService, PostService>()
+                .AddScoped<ISearchService, SearchService>()
                 .AddScoped<ICreatorService, CreatorService>();
             services
                 .AddSingleton<PostRepositoryCache>()

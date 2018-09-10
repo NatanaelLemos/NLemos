@@ -12,5 +12,6 @@ namespace NLemos.Domain.Data
         Task<List<Post>> SkipTake(int skip, int take);
 
         Task<Post> ReadFullPost(string hashName);
+        Task<List<Post>> Search(string text);
     }
 }

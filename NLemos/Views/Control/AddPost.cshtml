@@ -44,4 +44,14 @@
 @section scripts {
     <partial name="_ValidationScripts" />
     <script type="text/javascript" src="~/js/control.js"></script>
+    <script src="/lib/textboxio-client/textboxio/textboxio.js"></script>
+    <script>
+        textboxio.replace('[name="FullPost"]', {
+            ui: {
+                toolbar: {
+                    items: ['undo', 'insert', 'style', 'emphasis', 'align', 'listindent', 'tools']
+                }
+            }
+        });
+    </script>
 }

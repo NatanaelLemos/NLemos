@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using NLemos.Domain.Entities;
 using NLemos.Domain.Services;
+using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace NLemos.Controllers
@@ -7,10 +10,12 @@ namespace NLemos.Controllers
     public class PostController : Controller
     {
         private readonly IPostService _postService;
+        private readonly ISearchService _searchService;
 
-        public PostController(IPostService postService)
+        public PostController(IPostService postService, ISearchService searchService)
         {
             _postService = postService;
+            _searchService = searchService;
         }
 
         [ResponseCache(Duration = 3600 * 6, Location = ResponseCacheLocation.Client, VaryByQueryKeys = new string[] { "number" })] //six hours
@@ -28,28 +33,37 @@ namespace NLemos.Controllers
         {
             var fullPost = await _postService.ReadFullPost(hashName);
 
+            if (fullPost == null)
+            {
+                fullPost = new Post
+                {
+                    Title = "Artigo não encontrado",
+                    Summary = "Esse artigo não está disponível no momento",
+                    HashName = "notfound",
+                    PostDate = DateTime.Now
+                };
+            }
+
             ViewBag.Title = fullPost.Title;
             ViewBag.Summary = fullPost.Summary;
             ViewBag.Url = $"//nlemos.azurewebsites.net/Read/{hashName}";
+
             return View(fullPost);
         }
 
         [ResponseCache(Duration = 3600 * 6, Location = ResponseCacheLocation.Client, VaryByQueryKeys = new string[] { "args" })] //six hours
         public async Task<IActionResult> Search(string args)
         {
-            return View();
-            //ViewBag.Title = "Resultado da pesquisa";
+            ViewBag.Title = "Resultado da pesquisa";
 
-            //var searchResult = (await _searchService.Search(args)).OrderBy(s => s.Score);
-            //return View(searchResult.Select(r => new domain.entities.Post
-            //{
-            //    Id = r.Id,
-            //    HashName = r.HashName,
-            //    Title = r.Title,
-            //    Summary = r.Summary,
-            //    FullPost = "",
-            //    PostDate = r.PostDate
-            //}));
+            var searchResult = await _searchService.Search(args);
+            return View(searchResult.Select(r => new Post
+            {
+                HashName = r.HashName,
+                Title = r.Title,
+                Summary = r.Summary,
+                PostDate = r.PostDate
+            }));
         }
     }
 }

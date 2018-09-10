@@ -18,11 +18,16 @@ namespace NLemos.Infrastructure.Data
 
         public void Create(Post post)
         {
+            if (_ctx.Posts.Find(Builders<Post>.Filter.Eq(p => p.HashName, post.HashName)).Any())
+            {
+                throw new MongoDuplicateKeyException(null, "Title already in use", null);
+            }
+
             _ctx.Posts.InsertOne(post);
 
             foreach (var tag in post.Tags)
             {
-                var currTag = _ctx.Tags.Find(Builders<Domain.Entities.Tag>.Filter.Eq(t => t.Name, tag.Name)).FirstOrDefault();
+                var currTag = _ctx.Tags.Find(Builders<Domain.Entities.Tag>.Filter.Eq(t => t.HashName, tag.HashName)).FirstOrDefault();
                 var emptyPost = new Post { HashName = post.HashName, Title = post.Title };
                 if (currTag == null)
                 {
@@ -38,7 +43,7 @@ namespace NLemos.Infrastructure.Data
 
             _ctx.Posts.Indexes.CreateOne(
                 new CreateIndexModel<Post>(
-                    Builders<Post>.IndexKeys.Ascending(_ => _.FullPost)
+                    Builders<Post>.IndexKeys.Text(_ => _.FullPost)
                 )
             );
         }
@@ -65,6 +70,21 @@ namespace NLemos.Infrastructure.Data
                         .Include(p => p.PostDate)
                 )
                 .ToListAsync();
+        }
+
+        public Task<List<Post>> Search(string text)
+        {
+            return _ctx.Posts
+                    .Find(Builders<Post>.Filter.Text(text))
+                    .Limit(15)
+                    .Project<Post>(
+                        Builders<Post>.Projection
+                            .Include(p => p.HashName)
+                            .Include(p => p.Title)
+                            .Include(p => p.Summary)
+                            .Include(p => p.PostDate)
+                    )
+                    .ToListAsync();
         }
 
         public void Dispose()
