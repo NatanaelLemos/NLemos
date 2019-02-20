@@ -38,6 +38,16 @@ namespace NLemos.Infrastructure.Data
                 cm.AutoMap();
                 cm.SetIgnoreExtraElements(true);
             });
+            BsonClassMap.RegisterClassMap<Domain.Entities.ResumeItem>(cm =>
+            {
+                cm.AutoMap();
+                cm.SetIgnoreExtraElements(true);
+            });
+            BsonClassMap.RegisterClassMap<Domain.Entities.ResumeSection>(cm =>
+            {
+                cm.AutoMap();
+                cm.SetIgnoreExtraElements(true);
+            });
         }
 
         private void SeedCreator()
@@ -53,5 +63,7 @@ namespace NLemos.Infrastructure.Data
         public IMongoCollection<Domain.Entities.Tag> Tags => GetCollection<Domain.Entities.Tag>("tags");
 
         public IMongoCollection<Creator> Creators => GetCollection<Creator>("creators");
+
+        public IMongoCollection<ResumeSection> Resume => GetCollection<ResumeSection>("resumeSections");
     }
 }

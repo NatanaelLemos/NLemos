@@ -33,5 +33,10 @@ namespace NLemos.Infrastructure.Data
                 return cache;
             }
         }
+
+        public Task<List<ResumeSection>> GetResume()
+        {
+            return _instance.GetResume();
+        }
     }
 }

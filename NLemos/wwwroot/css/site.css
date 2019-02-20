@@ -33,14 +33,27 @@ p {
 
 .cv-ul {
     list-style-type: none;
+    padding-left: 5px;
 }
 
     .cv-ul li {
         margin-bottom: 40px;
     }
 
+        .cv-ul li h2 {
+            font-size: 14pt;
+            margin-top: 0;
+        }
+
+        .cv-ul li h3 {
+            font-size: 10pt;
+            margin-top: 14px;
+        }
+
         .cv-ul li p {
             margin-left: 12px;
+            margin-top: 14px;
+            font-size: 12pt;
         }
 
 .copyright.text-muted {
@@ -122,6 +135,10 @@ p {
         width: 20px;
         text-align: center;
     }
+
+legend {
+    font-weight: bold;
+}
 
 @media screen and (max-width: 767px) {
     .carousel-caption {

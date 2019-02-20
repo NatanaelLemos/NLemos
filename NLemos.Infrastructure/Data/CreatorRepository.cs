@@ -21,5 +21,10 @@ namespace NLemos.Infrastructure.Data
         {
             return _ctx.Creators.Find(Builders<Creator>.Filter.Empty).FirstOrDefaultAsync();
         }
+
+        public Task<List<ResumeSection>> GetResume()
+        {
+            return _ctx.Resume.Find(Builders<ResumeSection>.Filter.Empty).ToListAsync();
+        }
     }
 }

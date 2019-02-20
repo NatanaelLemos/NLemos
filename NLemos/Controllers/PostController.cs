@@ -22,7 +22,7 @@ namespace NLemos.Controllers
         public async Task<IActionResult> Page(int number)
         {
             ViewBag.Title = "Natanael Lemos";
-            ViewBag.Summary = "Um pouco sobre o mundo .Net e tecnologia em geral";
+            ViewBag.Summary = "";
             ViewBag.PageNumber = number;
             var posts = await _postService.ReadPage(number);
             return View(posts);

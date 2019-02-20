@@ -9,5 +9,6 @@ namespace NLemos.Domain.Data
     public interface ICreatorRepository
     {
         Task<Creator> Get();
+        Task<List<ResumeSection>> GetResume();
     }
 }

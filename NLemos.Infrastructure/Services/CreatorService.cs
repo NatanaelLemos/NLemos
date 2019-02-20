@@ -27,5 +27,10 @@ namespace NLemos.Infrastructure.Services
             var creator = await Get();
             return creator.Key == key;
         }
+
+        public Task<List<ResumeSection>> GetResume()
+        {
+            return _repository.GetResume();
+        }
     }
 }

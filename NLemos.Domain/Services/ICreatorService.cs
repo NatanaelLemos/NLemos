@@ -10,5 +10,6 @@ namespace NLemos.Domain.Services
     {
         Task<Creator> Get();
         Task<bool> ValidateKey(string key);
+        Task<List<ResumeSection>> GetResume();
     }
 }

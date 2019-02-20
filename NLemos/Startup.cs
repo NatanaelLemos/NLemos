@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
@@ -10,6 +12,7 @@ using NLemos.Domain.Services;
 using NLemos.Infrastructure.Data;
 using NLemos.Infrastructure.Services;
 using System;
+using System.Globalization;
 
 namespace NLemos
 {
@@ -36,8 +39,10 @@ namespace NLemos
             services
                 .AddSingleton<PostRepositoryCache>()
                 .AddSingleton<CreatorCache>()
-                .AddSingleton<BlogContext>(opt => new BlogContext(connectionString));
+                .AddSingleton(opt => new BlogContext(connectionString));
 
+            services
+                .AddLocalization(opt => opt.ResourcesPath = "Resources");
 
             services
                 .AddResponseCaching()
@@ -47,6 +52,7 @@ namespace NLemos
                     opt.EnableForHttps = true;
                 })
                 .AddMvc()
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -61,6 +67,19 @@ namespace NLemos
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+
+            var supportedCultures = new[]
+            {
+                new CultureInfo("en-US"),
+                new CultureInfo("pt-BR")
+            };
+
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("en-US"),
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures
+            });
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

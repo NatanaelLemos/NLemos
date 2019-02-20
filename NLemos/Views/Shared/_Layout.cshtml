@@ -2,6 +2,8 @@
 <html lang="pt-br" prefix="og:http://ogp.me/ns#">
 <partial name="_Head" />
 
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 @{
     var backgroundImage = ViewBag.BackgroundImage ?? "//res.cloudinary.com/dtdb0xrxd/image/upload/v1494106707/pexels-photo-234394_g69cfa.jpg";
     var description = @ViewBag.HeadDescription ?? "Natanael Lemos's blog";
@@ -29,7 +31,7 @@
                         <a href="@(Url.Action("Page", "Post"))">Home</a>
                     </li>
                     <li>
-                        <a href="@(Url.Action("CV", "Me"))">Curriculum Vitae</a>
+                        <a href="@(Url.Action("CV", "Me"))">@Localizer["Resume"]</a>
                     </li>
                 </ul>
             </div>
@@ -67,7 +69,7 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <p class="copyright text-muted">
-                        Copyright &copy; @(DateTime.Now.ToString("yyyy")) - Natanael Tavares Lemos
+                        Copyright &copy; @(DateTime.Now.ToString("yyyy")) - Natanael Lemos
                     </p>
                 </div>
             </div>
