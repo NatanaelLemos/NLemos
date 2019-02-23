@@ -31,10 +31,10 @@
                 </h3>
             </a>
             <time datetime="@(post.PostDate.ToString("yyyy-MM-dd"))" class="post-meta" itemprop="datePublished">
-                Postado em @post.PostDate.ToString("dd/MM/yyyy")
+                @post.PostDate.ToString("yyyy-MM-dd")
             </time>
             <time datetime="@(post.PostDate.ToString("yyyy-MM-dd"))" class="hide" itemprop="dateModified">
-                Modificado em @post.PostDate.ToString("dd/MM/yyyy")
+                @post.PostDate.ToString("yyyy-MM-dd")
             </time>
             <p itemprop="publisher" class="hide">Natanael Lemos</p>
             <p itemprop="author" class="hide">Natanael Lemos</p>
