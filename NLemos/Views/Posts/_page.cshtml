@@ -20,7 +20,7 @@
 <section>
     @foreach (var post in Model)
     {
-        var pageUrl = Url.Action("Read", "Post", new { hashName = post.HashName });
+        var pageUrl = Url.Action("Read", "Posts", new { @id = post.HashName });
         <article class="post-preview" itemid="@(pageUrl)" itemprop="blogPosts" itemscope itemtype="http://schema.org/BlogPosting">
             <a href="@pageUrl">
                 <h2 class="post-title" itemprop="headline">

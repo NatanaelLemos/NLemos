@@ -87,72 +87,12 @@ namespace NLemos
             app.UseResponseCaching();
             app.UseResponseCompression();
 
-            app.UseMvc(GetRoutes());
-        }
-
-        private static Action<IRouteBuilder> GetRoutes()
-        {
-            return routes =>
+            app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "readPost",
-                    template: "Read/{hashName}",
-                    defaults: new
-                    {
-                        controller = "Post",
-                        action = "Read"
-                    }
-                );
-
-                routes.MapRoute(
-                    name: "paging",
-                    template: "Page/{number}",
-                    defaults: new
-                    {
-                        controller = "Post",
-                        action = "Page"
-                    }
-                );
-
-                routes.MapRoute(
-                    name: "search",
-                    template: "Search/{args}",
-                    defaults: new
-                    {
-                        controller = "Post",
-                        action = "Search"
-                    }
-                );
-
-                routes.MapRoute(
-                    name: "me",
-                    template: "Me/{action}",
-                    defaults: new
-                    {
-                        controller = "Me"
-                    }
-                );
-
-                routes.MapRoute(
-                    name: "control",
-                    template: "Control/{action}",
-                    defaults: new
-                    {
-                        controller = "Control"
-                    }
-                );
-
-                routes.MapRoute(
                     name: "default",
-                    template: "",
-                    defaults: new
-                    {
-                        controller = "Post",
-                        action = "Page",
-                        number = 0
-                    }
-                );
-            };
+                    template: "{controller=Posts}/{action=Page}/{id?}");
+            });
         }
     }
 }

@@ -7,10 +7,10 @@
     @if (ViewBag.PageNumber > 0)
     {
         <li class="previous">
-            <a href="@(Url.Action("Page", "Post", new {@number = (int)ViewBag.PageNumber - 1}))">&larr; Newer Posts</a>
+            <a href="@(Url.Action("Page", "Posts", new {@id = (int)ViewBag.PageNumber - 1}))">&larr; Newer Posts</a>
         </li>
     }
     <li class="next">
-        <a href="@(Url.Action("Page", "Post", new {@number = (int)ViewBag.PageNumber + 1}))">Older Posts &rarr;</a>
+        <a href="@(Url.Action("Page", "Posts", new {@id = (int)ViewBag.PageNumber + 1}))">Older Posts &rarr;</a>
     </li>
 </ul>

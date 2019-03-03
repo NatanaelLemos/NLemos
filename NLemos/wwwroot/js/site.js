@@ -20,6 +20,6 @@
     }
 
     function searchPosts() {
-        window.location = '/Search/' + $('#txtSearch').val();
+        window.location = '/Posts/Search/' + $('#txtSearch').val();
     }
 });

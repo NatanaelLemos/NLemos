@@ -7,31 +7,31 @@ using System.Threading.Tasks;
 
 namespace NLemos.Controllers
 {
-    public class PostController : Controller
+    public class PostsController : Controller
     {
         private readonly IPostService _postService;
         private readonly ISearchService _searchService;
 
-        public PostController(IPostService postService, ISearchService searchService)
+        public PostsController(IPostService postService, ISearchService searchService)
         {
             _postService = postService;
             _searchService = searchService;
         }
 
-        [ResponseCache(Duration = 3600 * 6, Location = ResponseCacheLocation.Client, VaryByQueryKeys = new string[] { "number" })] //six hours
-        public async Task<IActionResult> Page(int number)
+        [ResponseCache(Duration = 3600 * 6, Location = ResponseCacheLocation.Client, VaryByQueryKeys = new string[] { "id" })] //six hours
+        public async Task<IActionResult> Page(int id = 0)
         {
             ViewBag.Title = "Natanael Lemos";
             ViewBag.Summary = "";
-            ViewBag.PageNumber = number;
-            var posts = await _postService.ReadPage(number);
+            ViewBag.PageNumber = id;
+            var posts = await _postService.ReadPage(id);
             return View(posts);
         }
 
-        [ResponseCache(Duration = 3600 * 24, Location = ResponseCacheLocation.Client, VaryByQueryKeys = new string[] { "hashName" })] //one day
-        public async Task<IActionResult> Read(string hashName)
+        [ResponseCache(Duration = 3600 * 24, Location = ResponseCacheLocation.Client, VaryByQueryKeys = new string[] { "id" })] //one day
+        public async Task<IActionResult> Read(string id)
         {
-            var fullPost = await _postService.ReadFullPost(hashName);
+            var fullPost = await _postService.ReadFullPost(id);
 
             if (fullPost == null)
             {
@@ -46,17 +46,17 @@ namespace NLemos.Controllers
 
             ViewBag.Title = fullPost.Title;
             ViewBag.Summary = fullPost.Summary;
-            ViewBag.Url = $"//nlemos.azurewebsites.net/Read/{hashName}";
+            ViewBag.Url = $"//nlemos.azurewebsites.net/Read/{id}";
 
             return View(fullPost);
         }
 
-        [ResponseCache(Duration = 3600 * 6, Location = ResponseCacheLocation.Client, VaryByQueryKeys = new string[] { "args" })] //six hours
-        public async Task<IActionResult> Search(string args)
+        [ResponseCache(Duration = 3600 * 6, Location = ResponseCacheLocation.Client, VaryByQueryKeys = new string[] { "id" })] //six hours
+        public async Task<IActionResult> Search(string id)
         {
             ViewBag.Title = "Resultado da pesquisa";
 
-            var searchResult = await _searchService.Search(args);
+            var searchResult = await _searchService.Search(id);
             return View(searchResult.Select(r => new Post
             {
                 HashName = r.HashName,

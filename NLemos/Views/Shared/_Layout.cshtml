@@ -22,13 +22,13 @@
                     <span class="sr-only">Toggle navigation</span>
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="@(Url.Action("Page", "Post"))">NLemos</a>
+                <a class="navbar-brand" href="@(Url.Action("Page", "Posts", new { @id = 0 }))">NLemos</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="@(Url.Action("Page", "Post"))">Home</a>
+                        <a href="@(Url.Action("Page", "Posts", new { @id = 0 }))">Home</a>
                     </li>
                     <li>
                         <a href="@(Url.Action("CV", "Me"))">@Localizer["Resume"]</a>
