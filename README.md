@@ -1,6 +1,6 @@
 # NLemos Personal Blog
 
-This app is published on: https://nlemos.azurewebsites.net/
+This app is published on: [https://natanael.lemos.dev](https://natanael.lemos.dev)
 
 ## Technologies
 
@@ -10,4 +10,4 @@ For this I used:
 
 * .Net Core 2.1.401
 * MongoDB
-* And for publishing, I'm using Visual Studio Team Services Build Service
+* And for publishing, I'm using Azure DevOps
