@@ -1,5 +1,9 @@
 # NLemos Personal Blog
 
+|Branch|Status|
+|------|-------------|
+|master|[![Build Status](https://dev.azure.com/natanaellemos/nlemos/_apis/build/status/nlemos-ASP.NET%20Core-CI?branchName=master)](https://dev.azure.com/natanaellemos/nlemos/_build/latest?definitionId=1&branchName=master)|
+
 This app is published on: [https://natanael.lemos.dev](https://natanael.lemos.dev)
 
 ## Technologies
