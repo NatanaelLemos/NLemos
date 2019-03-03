@@ -13,7 +13,7 @@ namespace NLemos.Controllers
             _service = service;
         }
 
-        //[ResponseCache(Duration = 3600 * 24, Location = ResponseCacheLocation.Client)] //one day
+        [ResponseCache(Duration = 3600 * 24, Location = ResponseCacheLocation.Client)] //one day
         public async Task<IActionResult> CV()
         {
             ViewBag.Resume = await _service.GetResume();
